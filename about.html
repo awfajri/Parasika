@@ -90,7 +90,7 @@
         class="rounded-[45px] overflow-hidden relative h-[250px] md:h-[350px] shadow-2xl"
       >
         <img
-          src="assets/img/Hero-3.jpeg"
+          src="assets/img/hero.jpeg"
           alt="Tentang Parasika"
           class="w-full h-full object-cover"
         />
@@ -115,11 +115,11 @@
         class="journey-card rounded-[50px] shadow-2xl relative overflow-hidden h-[650px] md:h-[700px]"
       >
         <div
-          class="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center gap-4"
+          class="absolute bottom-10 left-1/2 -translate-x-1/2 md:bottom-auto md:left-auto md:translate-x-0 md:right-10 md:top-1/2 md:-translate-y-1/2 z-30 flex flex-row md:flex-col items-center gap-6 md:gap-4"
         >
           <button
             onclick="prevSlide()"
-            class="text-white/50 hover:text-white transition-all border-2 border-white/20 hover:border-white p-2 rounded-full"
+            class="text-white/50 hover:text-white transition-all border-2 border-white/20 hover:border-white p-2 rounded-full -rotate-90 md:rotate-0"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -135,23 +135,25 @@
               <path d="m18 15-6-6-6 6" />
             </svg>
           </button>
-          <div class="flex flex-col gap-2">
+
+          <div class="flex flex-row md:flex-col gap-2">
             <div
               id="dot-0"
-              class="w-2 h-2 rounded-full bg-white transition-all duration-300"
+              class="rounded-full transition-all duration-300 bg-white w-4 h-2 md:w-2 md:h-4"
             ></div>
             <div
               id="dot-1"
-              class="w-2 h-2 rounded-full bg-white/30 transition-all duration-300"
+              class="rounded-full transition-all duration-300 bg-white/30 w-2 h-2"
             ></div>
             <div
               id="dot-2"
-              class="w-2 h-2 rounded-full bg-white/30 transition-all duration-300"
+              class="rounded-full transition-all duration-300 bg-white/30 w-2 h-2"
             ></div>
           </div>
+
           <button
             onclick="nextSlide()"
-            class="text-white/50 hover:text-white transition-all border-2 border-white/20 hover:border-white p-2 rounded-full"
+            class="text-white/50 hover:text-white transition-all border-2 border-white/20 hover:border-white p-2 rounded-full -rotate-90 md:rotate-0"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -168,7 +170,6 @@
             </svg>
           </button>
         </div>
-
         <div
           id="carousel-track"
           class="h-full transition-transform duration-700 ease-in-out"
@@ -185,14 +186,11 @@
               <p
                 class="text-sm md:text-lg font-medium leading-relaxed text-white/80 max-w-3xl mx-auto"
               >
-                Parasika Unsika lahir dari semangat mahasiswa Universitas
-                Singaperbangsa Karawang yang memiliki kecintaan tinggi terhadap
-                seni olah vokal. Sebagai Unit Kegiatan Mahasiswa (UKM), Parasika
-                dibentuk untuk mewadahi minat bakat mahasiswa dalam bernyanyi
-                paduan suara sekaligus menjadi representasi kesenian vokal resmi
-                dalam berbagai kegiatan akademik maupun non-akademik kampus.
+                Parasika adalah Unit Kegiatan Mahasiswa Paduan Suara Universitas
+                Singaperbangsa Karawang yang mewadahi bakat vokal mahasiswa
+                sekaligus menjadi representasi seni resmi kampus..
               </p>
-              <div class="pt-8">
+              <div class="pt-8 mb-10 md:mb-0">
                 <img
                   src="assets/img/music player maroon.png"
                   alt="Mojang Priangan"
@@ -221,7 +219,7 @@
                 juga mulai merambah kompetisi paduan suara di tingkat regional
                 dan nasional.
               </p>
-              <div class="pt-8">
+              <div class="pt-8 mb-10 md:mb-0">
                 <img
                   src="assets/img/music player purple.png"
                   alt="Music Player"
@@ -249,7 +247,7 @@
                 perkembangan genre musik paduan suara, Parasika konsisten
                 mencetak generasi penyanyi berprestasi.
               </p>
-              <div class="pt-8">
+              <div class="pt-8 mb-10 md:mb-0">
                 <img
                   src="assets/img/music player maroon.png"
                   alt="Music Player"
@@ -480,15 +478,17 @@
       function updateCarousel() {
         track.style.transform = `translateY(-${currentSlide * 100}%)`;
 
-        // Update dots
+        // Update dots dengan cara menimpa class agar dimensi responsifnya terbaca sempurna
         for (let i = 0; i < totalSlides; i++) {
           const dot = document.getElementById(`dot-${i}`);
           if (i === currentSlide) {
-            dot.classList.add("bg-white", "h-4");
-            dot.classList.remove("bg-white/30", "h-2");
+            // Lebar (w-4) di HP, Tinggi (h-4) di Desktop
+            dot.className =
+              "rounded-full transition-all duration-300 bg-white w-4 h-2 md:w-2 md:h-4";
           } else {
-            dot.classList.remove("bg-white", "h-4");
-            dot.classList.add("bg-white/30", "h-2");
+            // Ukuran standar untuk yang tidak aktif
+            dot.className =
+              "rounded-full transition-all duration-300 bg-white/30 w-2 h-2";
           }
         }
       }
