@@ -20,7 +20,8 @@ if (empty($npm) || empty($password)) {
 }
 
 // Cari user berdasarkan npm
-$stmt = $conn->prepare("SELECT id, nama_lengkap, password, role FROM users WHERE npm = ?");
+// Cari user berdasarkan npm
+$stmt = $conn->prepare("SELECT id, nama_lengkap, password, role, status FROM users WHERE npm = ?");
 $stmt->bind_param("s", $npm);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -29,6 +30,12 @@ $stmt->close();
 
 // Cek apakah user ditemukan dan password cocok
 if ($user && password_verify($password, $user['password'])) {
+    // Cek Status 
+    if ($user['status'] === 'pending') {
+        $_SESSION['login_error'] = "Akun Anda belum dikonfirmasi oleh Sekretaris. Silakan tunggu.";
+        header("Location: login.php");
+        exit;
+    }
 
     // Simpan data ke session
     $_SESSION['user_id']      = $user['id'];

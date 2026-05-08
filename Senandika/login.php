@@ -170,6 +170,10 @@
         </div>
 
         <button type="submit" class="btn-login">Masuk</button>
+        <div class="text-center mt-4">
+          <span style="font-size: 0.88rem; color: var(--text-muted);">Belum punya akun?</span>
+          <a href="registrasi.php" style="font-size: 0.88rem; font-weight: 700; color: var(--primary); text-decoration: none; font-family: var(--font-head);">Daftar di sini</a>
+        </div>
       </form>
     </div>
   </div>
