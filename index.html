@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parasika - Paguyuban Rakyat Seni UNSIKA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        scroll-behavior: smooth;
+      }
+      .bg-maroon {
+        background-color: #64102d;
+      }
+      .text-maroon {
+        color: #64102d;
+      }
+      .border-maroon {
+        border-color: #64102d;
+      }
+      .glass-nav {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+      .hero-gradient {
+        background: linear-gradient(135deg, #64102d 0%, #8b1a3d 100%);
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl glass-nav z-50 rounded-full px-6 py-3 flex items-center justify-between border border-white/10"
+    >
+      <a href="index.html" class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+        >
+          <img
+            src="assets/img/logo-parasika.png"
+            alt="Logo Parasika"
+            class="w-10 h-10 rounded-full object-cover bg-white p-1"
+          />
+        </div>
+        <span class="text-white font-bold text-lg hidden sm:block"
+          >Parasika</span
+        >
+      </a>
+      <div class="flex items-center gap-6">
+        <a
+          href="about.html"
+          class="text-white/80 hover:text-white text-sm font-medium transition-colors"
+          >About</a
+        >
+        <a
+          href="achievement.html"
+          class="text-white/80 hover:text-white text-sm font-medium transition-colors"
+          >Achievement</a
+        >
+        <a
+          href="Senandika/index.php"
+          class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-all"
+        >
+          Internal App
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+            ></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section
+      class="relative pt-32 pb-20 px-6 lg:px-24 max-w-7xl mx-auto overflow-hidden"
+    >
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="z-10">
+          <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+            Paguyuban Rakyat Seni <br />
+            <span class="text-maroon italic">UNSIKA</span>
+          </h1>
+          <p
+            class="text-gray-600 text-lg lg:text-xl leading-relaxed mb-8 max-w-lg"
+          >
+            Paguyuban Rakyat Seni Unsika, sebuah Unit Kegiatan Mahasiswa (UKM)
+            di Universitas Singaperbangsa Karawang yang mewadahi bakat mahasiswa
+            di bidang seni
+          </p>
+          <div class="flex flex-wrap gap-4 items-center">
+            <button
+              class="bg-maroon text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-xl hover:-translate-y-1 transition-all"
+            >
+              Bergabung Sekarang
+            </button>
+            <div
+              class="flex items-center gap-3 bg-gray-50 px-6 py-4 rounded-2xl border border-gray-100"
+            >
+              <span class="text-3xl font-bold text-maroon">50+</span>
+              <div
+                class="text-xs text-gray-500 font-semibold uppercase tracking-wider leading-tight"
+              >
+                Anggota<br />Terdaftar
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div
+            class="w-full aspect-video lg:aspect-square bg-gray-100 rounded-[45px] overflow-hidden shadow-2xl relative"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-tr from-maroon/20 to-transparent"
+            ></div>
+            <img
+              src="assets/img/Hero-3.jpeg"
+              alt="Kegiatan Parasika"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div
+            class="absolute -bottom-6 -right-6 w-32 h-32 bg-maroon rounded-3xl -z-10 animate-pulse"
+          ></div>
+        </div>
+      </div>
+    </section>
+    <!-- Cabang Seni -->
+    <section class="bg-gray-50 py-24 px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-maroon mb-4">Cabang Seni</h2>
+          <p class="text-gray-500">
+            Berbagai wadah kreativitas yang tersedia di Parasika
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Choir -->
+          <div
+            class="bg-maroon rounded-[40px] p-8 text-white group hover:scale-[1.02] transition-transform shadow-lg relative overflow-hidden"
+          >
+            <div
+              class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full group-hover:scale-150 transition-transform"
+            ></div>
+            <img
+              src="/assets/img/choir.svg"
+              alt="Choir Icon"
+              class="w-16 h-16 mb-6"
+            />
+            <h3 class="text-2xl font-bold mb-4">Choir</h3>
+            <p class="text-white/80 leading-relaxed">
+              Wadah pengembangan bakat vokal mahasiswa UNSIKA yang berfokus pada
+              penyajian musik vokal kelompok.
+            </p>
+          </div>
+          <!-- Dance -->
+          <div
+            class="bg-maroon rounded-[40px] p-8 text-white group hover:scale-[1.02] transition-transform shadow-lg relative overflow-hidden"
+          >
+            <div
+              class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full group-hover:scale-150 transition-transform"
+            ></div>
+            <img
+              src="assets/img/dancer.svg"
+              alt="Dance Icon"
+              class="w-16 h-16 mb-6"
+            />
+            <h3 class="text-2xl font-bold mb-4">Dance</h3>
+            <p class="text-white/80 leading-relaxed">
+              Unit kegiatan yang menaungi minat dan bakat mahasiswa dalam seni
+              tari (Modern & Tradisional).
+            </p>
+          </div>
+          <!-- Ansamble -->
+          <div
+            class="bg-maroon rounded-[40px] p-8 text-white group hover:scale-[1.02] transition-transform shadow-lg relative overflow-hidden"
+          >
+            <div
+              class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full group-hover:scale-150 transition-transform"
+            ></div>
+            <img
+              src="assets/img/ansamble.svg"
+              alt="Ansamble Icon"
+              class="w-16 h-16 mb-6"
+            />
+            <h3 class="text-2xl font-bold mb-4">Ansamble</h3>
+            <p class="text-white/80 leading-relaxed">
+              Cabang seni musik yang berfokus pada permainan alat musik secara
+              bersama-sama dalam harmoni.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="py-24 px-6 max-w-4xl mx-auto">
+      <h2 class="text-4xl lg:text-6xl font-bold text-center text-maroon mb-16">
+        Frequently Asked <br /><span class="text-gray-900 italic"
+          >Question</span
+        >
+      </h2>
+      <div class="space-y-6">
+        <!-- FAQ 1 -->
+        <div class="border-b border-gray-200 pb-6 group">
+          <div
+            class="flex items-center justify-between cursor-pointer"
+            onclick="toggleFaq(this)"
+          >
+            <div class="flex items-center gap-6">
+              <span
+                class="text-4xl font-bold text-gray-200 group-hover:text-maroon transition-colors"
+                >01</span
+              >
+              <h4 class="text-xl font-bold text-maroon m-0">
+                Apa itu PARASIKA?
+              </h4>
+            </div>
+            <div
+              class="w-10 h-10 rounded-full bg-maroon text-white flex items-center justify-center transition-transform duration-300 transform rotate-45 faq-icon"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="faq-content pl-[4.5rem] mt-4">
+            <p class="text-gray-600 leading-relaxed">
+              PARASIKA (Paguyuban Rakyat Seni Universitas Singaperbangsa
+              Karawang) adalah Unit Kegiatan Mahasiswa (UKM) seni di UNSIKA yang
+              aktif mengembangkan bakat mahasiswa dalam paduan suara, vokal,
+              tari, band, dan seni pertunjukan.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="border-b border-gray-200 pb-6 group">
+          <div
+            class="flex items-center justify-between cursor-pointer"
+            onclick="toggleFaq(this)"
+          >
+            <div class="flex items-center gap-6">
+              <span
+                class="text-4xl font-bold text-gray-200 group-hover:text-maroon transition-colors"
+                >02</span
+              >
+              <h4 class="text-xl font-bold text-maroon m-0">
+                Ada berapa cabang seni di Parasika?
+              </h4>
+            </div>
+            <div
+              class="w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center transition-transform duration-300 transform faq-icon"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="faq-content hidden pl-[4.5rem] mt-4">
+            <p class="text-gray-600 leading-relaxed">
+              Saat ini kami memiliki 3 cabang utama: Choir (Paduan Suara), Dance
+              (Tari Tradisional & Modern), dan Ansamble Musik.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="border-b border-gray-200 pb-6 group">
+          <div
+            class="flex items-center justify-between cursor-pointer"
+            onclick="toggleFaq(this)"
+          >
+            <div class="flex items-center gap-6">
+              <span
+                class="text-4xl font-bold text-gray-200 group-hover:text-maroon transition-colors"
+                >03</span
+              >
+              <h4 class="text-xl font-bold text-maroon m-0">
+                Bagaimana cara bergabung?
+              </h4>
+            </div>
+            <div
+              class="w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center transition-transform duration-300 transform faq-icon"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="faq-content hidden pl-[4.5rem] mt-4">
+            <p class="text-gray-600 leading-relaxed">
+              Anda bisa menekan tombol "Bergabung Sekarang" di atas atau
+              mengunjungi sekretariat kami di UNSIKA selama masa Open
+              Recruitment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-maroon pt-20 pb-8 px-6 mt-16">
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="bg-white rounded-[35px] p-10 lg:p-16 mb-10 shadow-lg text-gray-900"
+        >
+          <div class="grid lg:grid-cols-4 gap-10 lg:gap-8">
+            <!-- Column 1: Logo & Socials -->
+            <div class="flex flex-col justify-between">
+              <div>
+                <img
+                  src="assets/img/logo-parasika.png"
+                  alt="Logo Parasika"
+                  class="w-20 h-20 object-cover rounded-2xl bg-gray-50 p-2"
+                />
+              </div>
+              <div class="flex gap-4 mt-8">
+                <!-- IG -->
+                <a
+                  href="https://www.instagram.com/official.parasika/"
+                  target="_blank"
+                  class="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-maroon transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.036 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+                    />
+                  </svg>
+                </a>
+                <!-- TikTok -->
+                <a
+                  href="https://www.tiktok.com/@parasika?_t=8oTWa7FdUFV&_r=1"
+                  target="_blank"
+                  class="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-maroon transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"
+                    />
+                  </svg>
+                </a>
+                <!-- YouTube -->
+                <a
+                  href="https://www.youtube.com/@paguyubanrakyatseniunsika4023"
+                  target="_blank"
+                  class="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-maroon transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172 1.284.22 2.456.028.691.031 1.408.031 2.158 0 .749-.003 1.467-.031 2.158-.048 1.171-.119 2.076-.22 2.455a2.01 2.01 0 0 1-1.415 1.42c-1.123.302-5.288.332-6.11.335h-.089c-.822-.003-4.987-.033-6.11-.335a2.01 2.01 0 0 1-1.415-1.42c-.101-.38-.172-1.284-.22-2.455-.028-.691-.031-1.408-.031-2.158 0-.749.003-1.467.031-2.158.048-1.171.119-2.076.22-2.456a2.01 2.01 0 0 1 1.415-1.42c1.123-.302 5.288-.332 6.11-.335zM5.525 10.536 11.32 8l-5.795-2.536v5.072z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Column 2: Information -->
+            <div class="flex flex-col">
+              <h5
+                class="text-[0.7rem] font-bold tracking-widest text-gray-400 mb-6 uppercase"
+              >
+                Information
+              </h5>
+              <div class="flex flex-col gap-3 font-medium text-[0.95rem]">
+                <a href="index.html" class="hover:text-maroon transition-colors"
+                  >Home</a
+                >
+                <a href="about.html" class="hover:text-maroon transition-colors"
+                  >About</a
+                >
+                <a
+                  href="achievement.html"
+                  class="hover:text-maroon transition-colors"
+                  >Achievement</a
+                >
+              </div>
+            </div>
+
+            <!-- Column 3: Internal App & Address -->
+            <div class="flex flex-col justify-between">
+              <div>
+                <h5
+                  class="text-[0.7rem] font-bold tracking-widest text-gray-400 mb-6 uppercase"
+                >
+                  Internal App
+                </h5>
+                <a
+                  href="Senandika/index.php"
+                  class="font-medium text-[0.95rem] hover:text-maroon transition-colors"
+                  >Senandika</a
+                >
+              </div>
+              <div
+                class="mt-8 lg:mt-0 text-[0.85rem] text-gray-500 leading-relaxed"
+              >
+                Jl. HS. Ronggo Waluyo, Puseurjaya, Telukjambe Timur, Karawang
+                41361
+              </div>
+            </div>
+
+            <!-- Column 4: Contact -->
+            <div class="flex flex-col lg:items-end lg:text-right">
+              <a
+                href="mailto:officialparasika@unsika.ac.id"
+                class="inline-block bg-maroon text-white font-bold text-sm px-7 py-3 rounded-xl hover:bg-maroon/90 transition-colors mb-4 w-max"
+              >
+                Hubungi Kami
+              </a>
+              <p class="font-bold text-base mb-1">+62 851 5628 7360</p>
+              <p class="text-sm mb-6">officialparasika@unsika.ac.id</p>
+
+              <div class="mt-auto">
+                <img
+                  src="assets/img/music.jpg"
+                  onerror="this.src = 'assets/img/music player maroon.png'"
+                  alt="Cassette"
+                  class="w-full max-w-[180px] rounded-xl shadow-md lg:ml-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div
+          class="flex flex-col md:flex-row justify-between items-center text-xs font-medium text-white/70 px-4 gap-4"
+        >
+          <p>© 2026 — Copyright Kelompok 4</p>
+          <div class="flex gap-4">
+            <a href="#" class="hover:text-white transition-colors"
+              >Privacy Policy | Term of Service</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function toggleFaq(element) {
+        const content = element.nextElementSibling;
+        const icon = element.querySelector(".faq-icon");
+
+        if (content.classList.contains("hidden")) {
+          content.classList.remove("hidden");
+          icon.classList.add("rotate-45", "bg-maroon", "text-white");
+          icon.classList.remove("bg-gray-200", "text-gray-600");
+        } else {
+          content.classList.add("hidden");
+          icon.classList.remove("rotate-45", "bg-maroon", "text-white");
+          icon.classList.add("bg-gray-200", "text-gray-600");
+        }
+      }
+    </script>
+  </body>
+</html>
