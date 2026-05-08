@@ -1,6 +1,8 @@
 <?php
 $page_title = 'Dashboard - Senandika';
 $asset_path = '../../';
+$base_path  = '../../';
+require_once '../../includes/auth.php';
 include '../../includes/head.php';
 ?>
 
@@ -69,16 +71,15 @@ include '../../includes/head.php';
       </div>
 
       <div class="card-custom">
-        <div class="card-number" style="font-size:1.15rem;margin-bottom:16px;font-weight:700;font-family:var(--font-head);">
-          Aktivitas Terbaru Anda
+        <div style="font-size:1.1rem;font-weight:700;font-family:var(--font-head);margin-bottom:16px;">
+          Log Aktivitas Terbaru Sistem
         </div>
         
         <?php
-        $user_id = $_SESSION['user_id'] ?? 1; // Fallback untuk testing jika session tdk terbaca
         $log_query = $conn->query("
-          SELECT d.nama_dokumen, d.created_at 
+          SELECT u.nama_lengkap, d.nama_dokumen, d.created_at 
           FROM dokumen d 
-          WHERE uploader_id = $user_id
+          JOIN users u ON d.uploader_id = u.id 
           ORDER BY d.created_at DESC 
           LIMIT 7
         ");
@@ -86,19 +87,27 @@ include '../../includes/head.php';
         if ($log_query) {
             while ($log = $log_query->fetch_assoc()) {
                 $activities[] = [
+                    'user' => $log['nama_lengkap'],
                     'name' => 'Mengunggah ' . $log['nama_dokumen'],
                     'date' => date('d M Y', strtotime($log['created_at']))
                 ];
             }
         }
         if (empty($activities)) {
-            $activities[] = ['name' => 'Belum ada aktivitas unggah dokumen.', 'date' => '-'];
+            $activities[] = ['user' => '-', 'name' => 'Belum ada aktivitas unggah dokumen.', 'date' => '-'];
         }
         ?>
         <div class="activity-list">
           <?php foreach ($activities as $act): ?>
           <div class="activity-item">
-            <span class="activity-name"><?= htmlspecialchars($act['name']) ?></span>
+            <div>
+              <div style="font-weight:700; font-family:var(--font-head); font-size:0.88rem; color:var(--primary);">
+                  <?= htmlspecialchars($act['user']) ?>
+              </div>
+              <div style="font-size:0.88rem; color:var(--text-muted);">
+                  <?= htmlspecialchars($act['name']) ?>
+              </div>
+            </div>
             <span class="activity-date"><?= htmlspecialchars($act['date']) ?></span>
           </div>
           <?php endforeach; ?>

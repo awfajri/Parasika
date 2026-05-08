@@ -24,6 +24,9 @@ $dokumen = [
 
   <div class="main-content w-100">
     <div class="content-area">
+      <button id="sidebarToggle" class="btn btn-light d-md-none mb-3">
+  <i class="bi bi-list"></i> Menu
+</button>
 
       <div class="section-hero mb-4">
         <h1>Detail Dokumen</h1>

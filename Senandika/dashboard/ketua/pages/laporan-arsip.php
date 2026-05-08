@@ -10,6 +10,9 @@
 
     <div class="main-content w-100">
         <div class="content-area">
+        <button id="sidebarToggle" class="btn btn-light d-md-none mb-3">
+            <i class="bi bi-list"></i> Menu
+        </button>
 
         <!-- Section Hero -->
         <div class="section-hero">
@@ -48,65 +51,67 @@
         <!-- Tabel Dokumen -->
         <div class="table-card">
             <div class="p-3">
-            <table class="table-custom" id="laporanTable">
-                <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Dokumen</th>
-                    <th>Kategori</th>
-                    <th>Waktu Unggah</th>
-                    <th>Aksi</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                require_once '../../../config/database.php';
-                $kategori = trim($_GET['kategori'] ?? '');
-                $sql = "SELECT d.id, d.nama_dokumen, d.file_url, d.created_at, k.nama_kategori
-                        FROM dokumen d
-                        JOIN kategori_arsip k ON d.kategori_id = k.id
-                        WHERE 1=1";
-                $types = '';
-                $params = [];
-                if (!empty($kategori)) {
-                    $sql .= " AND k.nama_kategori = ?";
-                    $types .= 's';
-                    $params[] = $kategori;
-                }
-                $sql .= " ORDER BY d.created_at DESC";
-                $stmt = $conn->prepare($sql);
-                $hasil = [];
-                if ($stmt) {
-                    if (!empty($params)) {
-                        $stmt->bind_param($types, ...$params);
-                    }
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($row = $result->fetch_assoc()) {
-                        $hasil[] = $row;
-                    }
-                    $stmt->close();
-                }
-                if (empty($hasil)):
-                ?>
-                <tr><td colspan="5" class="text-center">Tidak ada dokumen ditemukan.</td></tr>
-                <?php else:
-                foreach ($hasil as $i => $doc): ?>
-                <tr>
-                    <td><?= $i + 1 ?></td>
-                    <td><?= htmlspecialchars($doc['nama_dokumen']) ?></td>
-                    <td><?= htmlspecialchars($doc['nama_kategori']) ?></td>
-                    <td><?= htmlspecialchars($doc['created_at']) ?></td>
-                    <td>
-                    <a href="<?= htmlspecialchars($doc['file_url']) ?>"
-                        class="btn-lihat-file" target="_blank">
-                        <i class="bi bi-box-arrow-up-right"></i> Lihat File
-                    </a>
-                    </td>
-                </tr>
-                <?php endforeach; endif; ?>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+              <table class="table-custom" id="laporanTable">
+                  <thead>
+                  <tr>
+                      <th>No</th>
+                      <th>Nama Dokumen</th>
+                      <th>Kategori</th>
+                      <th>Waktu Unggah</th>
+                      <th>Aksi</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                  require_once '../../../config/database.php';
+                  $kategori = trim($_GET['kategori'] ?? '');
+                  $sql = "SELECT d.id, d.nama_dokumen, d.file_url, d.created_at, k.nama_kategori
+                          FROM dokumen d
+                          JOIN kategori_arsip k ON d.kategori_id = k.id
+                          WHERE 1=1";
+                  $types = '';
+                  $params = [];
+                  if (!empty($kategori)) {
+                      $sql .= " AND k.nama_kategori = ?";
+                      $types .= 's';
+                      $params[] = $kategori;
+                  }
+                  $sql .= " ORDER BY d.created_at DESC";
+                  $stmt = $conn->prepare($sql);
+                  $hasil = [];
+                  if ($stmt) {
+                      if (!empty($params)) {
+                          $stmt->bind_param($types, ...$params);
+                      }
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      while ($row = $result->fetch_assoc()) {
+                          $hasil[] = $row;
+                      }
+                      $stmt->close();
+                  }
+                  if (empty($hasil)):
+                  ?>
+                  <tr><td colspan="5" class="text-center">Tidak ada dokumen ditemukan.</td></tr>
+                  <?php else:
+                  foreach ($hasil as $i => $doc): ?>
+                  <tr>
+                      <td><?= $i + 1 ?></td>
+                      <td><?= htmlspecialchars($doc['nama_dokumen']) ?></td>
+                      <td><?= htmlspecialchars($doc['nama_kategori']) ?></td>
+                      <td><?= htmlspecialchars($doc['created_at']) ?></td>
+                      <td>
+                      <a href="<?= htmlspecialchars($doc['file_url']) ?>"
+                          class="btn-lihat-file" target="_blank">
+                          <i class="bi bi-box-arrow-up-right"></i> Lihat File
+                      </a>
+                      </td>
+                  </tr>
+                  <?php endforeach; endif; ?>
+                  </tbody>
+              </table>
+            </div>
             </div>
         </div>
 

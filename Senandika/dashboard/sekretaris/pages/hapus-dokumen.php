@@ -2,6 +2,7 @@
 session_start();
 require_once '../../../config/database.php';
 require_once '../../../includes/auth.php';
+include '../../../includes/head.php'; // Panggil head untuk load library sweetalert
 
 if (!isset($_GET['id'])) {
     header("Location: kelola-dokumen.php");
@@ -9,8 +10,6 @@ if (!isset($_GET['id'])) {
 }
 
 $id = intval($_GET['id']);
-
-// Dapatkan data dokumen (terutama nama_file)
 $stmt = $conn->prepare("SELECT nama_file, uploader_id FROM dokumen WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -19,24 +18,16 @@ $dokumen = $result->fetch_assoc();
 $stmt->close();
 
 if (!$dokumen) {
-    echo "<script>alert('Dokumen tidak ditemukan!'); window.location.href='kelola-dokumen.php';</script>";
-    exit;
-}
-
-// Cek akses (contoh: sekretaris boleh hapus semua, atau pemilik dokumen)
-if ($_SESSION['role'] !== 'sekretaris' && $_SESSION['role'] !== 'ketua' && $_SESSION['user_id'] !== $dokumen['uploader_id']) {
-    echo "<script>alert('Anda tidak memiliki akses untuk menghapus dokumen ini!'); window.location.href='kelola-dokumen.php';</script>";
+    echo "<script>document.addEventListener('DOMContentLoaded', function() { Swal.fire('Error', 'Dokumen tidak ditemukan!', 'error').then(()=> window.location.href='kelola-dokumen.php'); });</script>";
     exit;
 }
 
 $nama_file = $dokumen['nama_file'];
-
-// Hapus dari database
 $del_stmt = $conn->prepare("DELETE FROM dokumen WHERE id = ?");
 $del_stmt->bind_param("i", $id);
 
 if ($del_stmt->execute()) {
-    // Hapus dari Supabase Storage
+    // Proses hapus di Supabase
     $supabase_url = 'https://xhsklaikgrvuspytbrrq.supabase.co';
     $supabase_key = 'sb_publishable_mho-sfVKTUZUGqMJe6GImA_GeyxciY-';
     $bucket_name = 'senandika_arsip';
@@ -50,14 +41,12 @@ if ($del_stmt->execute()) {
         'Authorization: Bearer ' . $supabase_key,
         'apikey: ' . $supabase_key
     ]);
-
-    $response = curl_exec($ch);
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_exec($ch);
     curl_close($ch);
 
-    echo "<script>alert('Dokumen berhasil dihapus!'); window.location.href='kelola-dokumen.php';</script>";
+    echo "<script>document.addEventListener('DOMContentLoaded', function() { Swal.fire('Berhasil!', 'Dokumen berhasil dihapus!', 'success').then(()=> window.location.href='kelola-dokumen.php'); });</script>";
 } else {
-    echo "<script>alert('Gagal menghapus dokumen dari database!'); window.location.href='kelola-dokumen.php';</script>";
+    echo "<script>document.addEventListener('DOMContentLoaded', function() { Swal.fire('Gagal!', 'Gagal menghapus dokumen!', 'error').then(()=> window.location.href='kelola-dokumen.php'); });</script>";
 }
 
 $del_stmt->close();

@@ -26,18 +26,18 @@ $allowed_ext = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png'];
 $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
 
 if (!in_array($file_ext, $allowed_ext)) {
-    echo "<script>alert('Ekstensi file tidak diizinkan!'); window.location.href='tambah-dokumen.php';</script>";
+    header("Location: tambah-dokumen.php?status=ext_error");
     exit;
 }
 
 if ($file_error !== 0) {
-    echo "<script>alert('Terjadi kesalahan saat mengunggah file!'); window.location.href='tambah-dokumen.php';</script>";
+    header("Location: tambah-dokumen.php?status=upload_error");
     exit;
 }
 
 // 5MB = 5 * 1024 * 1024 bytes
 if ($file_size > 5242880) {
-    echo "<script>alert('Ukuran file maksimal 5MB!'); window.location.href='tambah-dokumen.php';</script>";
+    header("Location: tambah-dokumen.php?status=size_error");
     exit;
 }
 
@@ -81,12 +81,12 @@ if ($http_code == 200) {
     $stmt->bind_param("iisssssi", $uploader_id, $kategori_id, $nama_dokumen, $deskripsi, $new_file_name, $public_url, $file_ext, $file_size);
     
     if ($stmt->execute()) {
-        echo "<script>alert('Dokumen berhasil ditambahkan!'); window.location.href='kelola-dokumen.php';</script>";
+        header("Location: kelola-dokumen.php?status=success");
     } else {
-        echo "<script>alert('Gagal menyimpan ke database!'); window.location.href='tambah-dokumen.php';</script>";
+        header("Location: tambah-dokumen.php?status=db_error");
     }
     $stmt->close();
 } else {
-    echo "<script>alert('Gagal mengunggah ke Supabase! HTTP Code: $http_code'); window.location.href='tambah-dokumen.php';</script>";
+    header("Location: tambah-dokumen.php?status=supabase_error&code=$http_code");
 }
 ?>

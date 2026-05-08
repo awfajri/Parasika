@@ -1,10 +1,10 @@
-
-    <?php
-    require_once '../../config/database.php';
-    $page_title = 'Dashboard Anggota - Senandika';
-    $asset_path = '../../';
-    include '../../includes/head.php';
-    ?>
+<?php
+$page_title = 'Dashboard Anggota - Senandika';
+$asset_path = '../../';
+$base_path  = '../../';
+require_once '../../includes/auth.php';
+include '../../includes/head.php';
+?>
 
     <div class="d-flex">
 
@@ -12,6 +12,9 @@
 
     <div class="main-content w-100">
         <div class="content-area">
+            <button id="sidebarToggle" class="btn btn-light d-md-none mb-3">
+                <i class="bi bi-list"></i> Menu
+            </button>   
 
         <!-- Hero Banner -->
         <div class="hero-banner">

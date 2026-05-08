@@ -1,6 +1,8 @@
 <?php
 $page_title = 'Dashboard Ketua - Senandika';
 $asset_path = '../../';
+$base_path  = '../../';
+require_once '../../includes/auth.php';
 include '../../includes/head.php';
 ?>
 
@@ -10,6 +12,9 @@ include '../../includes/head.php';
 
 <div class="main-content w-100">
     <div class="content-area">
+        <button id="sidebarToggle" class="btn btn-light d-md-none mb-3">
+            <i class="bi bi-list"></i> Menu
+</button>
 
     <!-- Hero Banner -->
     <div class="hero-banner">

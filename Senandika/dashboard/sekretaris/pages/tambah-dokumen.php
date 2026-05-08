@@ -14,6 +14,9 @@ $kategori_query = $conn->query("SELECT id, nama_kategori FROM kategori_arsip");
 
   <div class="main-content w-100">
     <div class="content-area">
+      <button id="sidebarToggle" class="btn btn-light d-md-none mb-3">
+        <i class="bi bi-list"></i> Menu
+      </button>
 
       <!-- Section Hero -->
       <div class="section-hero mb-4">
@@ -83,5 +86,21 @@ $kategori_query = $conn->query("SELECT id, nama_kategori FROM kategori_arsip");
   </div>
 
 </div>
+
+<?php if (isset($_GET['status'])): ?>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      let status = '<?= $_GET['status'] ?>';
+      let msg = '';
+      if(status === 'ext_error') msg = 'Ekstensi file tidak diizinkan!';
+      if(status === 'upload_error') msg = 'Terjadi kesalahan saat mengunggah file!';
+      if(status === 'size_error') msg = 'Ukuran file maksimal 5MB!';
+      if(status === 'db_error') msg = 'Gagal menyimpan ke database!';
+      if(status === 'supabase_error') msg = 'Gagal mengunggah ke Supabase! Code: <?= $_GET['code'] ?? "" ?>';
+      
+      if(msg) Swal.fire('Gagal!', msg, 'error');
+  });
+</script>
+<?php endif; ?>
 
 <?php include '../../../includes/scripts.php'; ?>

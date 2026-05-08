@@ -106,33 +106,35 @@ $kategori = trim($_GET['kategori'] ?? '');
             </p>
         </div>
         <?php else: ?>
-        <table class="table-custom">
-            <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Dokumen</th>
-                <th>Kategori</th>
-                <th>Waktu Unggah</th>
-                <th>Aksi</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($hasil as $i => $doc): ?>
-            <tr>
-                <td><?= $i + 1 ?></td>
-                <td><?= htmlspecialchars($doc['nama_dokumen']) ?></td>
-                <td><?= htmlspecialchars($doc['nama_kategori']) ?></td>
-                <td><?= htmlspecialchars(date('d M Y H:i', strtotime($doc['created_at']))) ?></td>
-                <td>
-                <a href="<?= htmlspecialchars($doc['file_url']) ?>"
-                    class="btn-lihat-file" target="_blank">
-                    <i class="bi bi-box-arrow-up-right"></i> Lihat File
-                </a>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table-custom">
+              <thead>
+              <tr>
+                  <th>No</th>
+                  <th>Nama Dokumen</th>
+                  <th>Kategori</th>
+                  <th>Waktu Unggah</th>
+                  <th>Aksi</th>
+              </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($hasil as $i => $doc): ?>
+              <tr>
+                  <td><?= $i + 1 ?></td>
+                  <td><?= htmlspecialchars($doc['nama_dokumen']) ?></td>
+                  <td><?= htmlspecialchars($doc['nama_kategori']) ?></td>
+                  <td><?= htmlspecialchars(date('d M Y H:i', strtotime($doc['created_at']))) ?></td>
+                  <td>
+                  <a href="<?= htmlspecialchars($doc['file_url']) ?>"
+                      class="btn-lihat-file" target="_blank">
+                      <i class="bi bi-box-arrow-up-right"></i> Lihat File
+                  </a>
+                  </td>
+              </tr>
+              <?php endforeach; ?>
+              </tbody>
+          </table>
+        </div>
         <?php endif; ?>
         </div>
     </div>
