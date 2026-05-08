@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--body-bg);
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./assets/img/hero-3.jpeg") center/cover no-repeat;
     padding: 24px;
   }
 
@@ -57,12 +57,14 @@
   }
 
   .login-card {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
     padding: 48px 44px;
     width: 100%;
     max-width: 420px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .login-logo {

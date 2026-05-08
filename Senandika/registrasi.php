@@ -14,10 +14,17 @@ include 'includes/head.php';
 ?>
 
 <style>
-.login-wrapper { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--body-bg); padding: 24px; }
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./assets/img/hero-3.jpeg") center/cover no-repeat;
+    padding: 24px;
+  }
 .btn-back { position: fixed; top: 24px; left: 28px; display: flex; align-items: center; gap: 8px; background: #fff; color: var(--primary); font-family: var(--font-head); font-weight: 600; font-size: 0.88rem; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: 1.5px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: all 0.18s ease; z-index: 100; }
 .btn-back:hover { background: #FFF0F3; border-color: var(--primary); color: var(--primary); transform: translateX(-2px); }
-.login-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-md); padding: 48px 44px; width: 100%; max-width: 460px; }
+.login-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-radius: var(--radius); box-shadow: var(--shadow-md); padding: 48px 44px; width: 100%; max-width: 460px; border: 1px solid rgba(255, 255, 255, 0.2); }
 .login-title { font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; text-align: center; color: var(--primary); margin-bottom: 6px; }
 .login-sub { text-align: center; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 28px; }
 .btn-login { background: var(--primary); color: #fff; font-family: var(--font-head); font-weight: 700; font-size: 0.95rem; padding: 12px; border-radius: 50px; border: none; cursor: pointer; width: 100%; transition: background 0.18s; }
