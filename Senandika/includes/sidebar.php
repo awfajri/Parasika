@@ -19,6 +19,9 @@ $current_dir  = basename(dirname($_SERVER['PHP_SELF']));
     <a href="<?= $asset_path ?>dashboard/sekretaris/pages/kelola-anggota.php" class="nav-link-item <?= ($current_page === 'kelola-anggota.php') ? 'active' : '' ?>">
       <i class="bi bi-people"></i> Kelola Anggota
     </a>
+    <a href="<?= $asset_path ?>dashboard/sekretaris/pages/pengajuan-surat.php" class="nav-link-item <?= ($current_page === 'pengajuan-surat.php') ? 'active' : '' ?>">
+      <i class="bi bi-envelope-paper"></i> Pengajuan Surat
+    </a>
   </nav>
   <!-- Logout -->  
   <div class="sidebar-logout">

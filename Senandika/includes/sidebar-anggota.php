@@ -24,6 +24,10 @@
         <i class="bi bi-search"></i>
         Cari Arsip
         </a>
+
+        <a href="<?= $asset_path ?>dashboard/anggota/pages/pengajuan-surat.php" class="nav-link-item <?= ($current_page === 'pengajuan-surat.php') ? 'active' : '' ?>">
+      <i class="bi bi-envelope-paper"></i> Pengajuan Surat
+    </a>
     </nav>
 
     <!-- Logout -->
