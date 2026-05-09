@@ -5,24 +5,29 @@ Selamat datang di repositori resmi **Parasika** (Paguyuban Rakyat Seni Unsika) d
 ---
 
 ## 🎭 1. Parasika (Public Website)
+
 Parasika adalah Unit Kegiatan Mahasiswa (UKM) seni di Universitas Singaperbangsa Karawang yang bergerak di bidang tarik suara, ansambel, dan tari.
 
 ### Fitur Utama:
+
 - **Profil Organisasi**: Informasi sejarah, visi, dan misi.
 - **Cabang Seni**: Detail mengenai Choir (Paduan Suara) dan Tari Tradisional/Modern.
 - **Daftar Prestasi**: Katalog penghargaan yang telah diraih oleh Parasika.
 - **FAQ Interaktif**: Pertanyaan yang sering diajukan terkait pendaftaran dan kegiatan.
 
 ### Teknologi:
+
 - **HTML5 & CSS3** (Vanilla & Tailwind CSS)
 - **JavaScript** (Custom animations & carousel)
 
 ---
 
 ## 📂 2. Senandika (E-Archive System)
+
 Senandika adalah aplikasi internal berbasis web yang dirancang untuk menyimpan, mengelola, dan menemukan kembali dokumen organisasi UKM secara aman.
 
 ### Fitur Utama:
+
 - **Cloud Storage Integration**: Menggunakan **Supabase Storage API** untuk penyimpanan file yang terdistribusi dan aman.
 - **Multi-Level Access Control**:
   - **Sekretaris**: Full control (Unggah, Edit, Hapus, Kelola Anggota, Proses Pengajuan Surat).
@@ -32,6 +37,7 @@ Senandika adalah aplikasi internal berbasis web yang dirancang untuk menyimpan, 
 - **Layanan Pengajuan Surat**: Sistem antrean digital untuk permintaan pembuatan surat resmi.
 
 ### Teknologi:
+
 - **Backend**: PHP 8.x
 - **Database**: MySQL & Supabase Storage (Cloud)
 - **Frontend**: Bootstrap 5.3, Tailwind CSS, SweetAlert2
@@ -39,20 +45,13 @@ Senandika adalah aplikasi internal berbasis web yang dirancang untuk menyimpan, 
 
 ---
 
-## 🚀 Cara Instalasi
-1. Clone repositori ini:
-   ```bash
-   git clone https://github.com/username/Parasika-Unsika.git
-   ```
-2. Pindahkan folder proyek ke direktori server lokal Anda (misal: `htdocs` untuk XAMPP).
-3. Impor database `db_senandika.sql` yang tersedia di folder proyek ke phpMyAdmin.
-4. Sesuaikan konfigurasi database di `Senandika/config/database.php`.
-5. Buka browser dan akses `localhost/Parasika-Unsika/index.html`.
-
----
-
 ## 👨‍💻 Kontributor
+
 Proyek ini dikembangkan oleh **Kelompok 4** sebagai bagian dari tugas pengembangan sistem informasi organisasi.
+
+1. Auf Fajri Ramadhani
+2. Imas Anisa
+3. Muhamad hafiz
 
 ---
 
