@@ -16,6 +16,7 @@
       }
     </script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="../assets/img/logo-parasika.png">
 </head>
 <body>
 
@@ -24,7 +25,7 @@
         <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl glass-nav z-50 rounded-full px-6 py-3 flex items-center justify-between border border-white/10" style="background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px);">
           <a href="javascript:window.location.reload();" class="flex items-center gap-3 text-decoration-none">
             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-              <img src="assets/img/logo.jpg" alt="Logo Parasika" class="w-10 h-10 rounded-full object-cover bg-white p-1" />
+              <img src="../assets/img/logo-parasika.png" alt="Logo Parasika" class="w-10 h-10 rounded-full object-cover bg-white p-1" />
             </div>
             <span class="text-white font-bold text-lg hidden sm:block">Parasika</span>
           </a>
@@ -60,7 +61,7 @@
                     </div>
                 </div>
                 <div class="stat-container">
-                    <img src="assets/img/logo.jpg" alt="Logo Parasika" class="parasika-logo-large d-none d-sm-block">
+                    <img src="../assets/img/logo-parasika.png" alt="Logo Parasika" class="parasika-logo-large d-none d-sm-block">
                     
                     <div class="stat-box">
                         <span class="stat-number">20+</span>
@@ -157,7 +158,7 @@
                     
                     <div class="col-lg-3 d-flex flex-column justify-content-between mb-4 mb-lg-0">
                         <div>
-                            <img src="assets/img/logo.jpg" alt="Logo" class="footer-logo">
+                            <img src="../assets/img/logo-parasika.png" alt="Logo" class="footer-logo">
                         </div>
                         <div class="mt-4">
                             <a href="https://www.instagram.com/official.parasika/" class="social-circle"><i class="bi bi-instagram"></i></a>
@@ -208,7 +209,7 @@
 
     <div class="fab-back-container">
         <a href="../index.html" class="fab-back" title="Kembali ke Website Utama">
-            <img src="assets/img/logo.jpg" alt="Logo">
+            <img src="../assets/img/logo-parasika.png" alt="Logo">
             <span class="fab-text">Back to Homepage</span>
         </a>
     </div>

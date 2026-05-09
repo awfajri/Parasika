@@ -1,0 +1,69 @@
+/* 
+  PARASIKA MAIN STYLE 
+  Digunakan untuk halaman: index.html, about.html, achievement.html
+*/
+
+/* --- Global Styles --- */
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* --- Color Variables & Utilities --- */
+.bg-maroon {
+  background-color: #64102d;
+}
+.text-maroon {
+  color: #64102d;
+}
+.border-maroon {
+  border-color: #64102d;
+}
+
+/* --- Navigation Styles --- */
+.glass-nav {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* --- Hero & Visual Effects --- */
+.hero-gradient {
+  background: linear-gradient(135deg, #64102d 0%, #8b1a3d 100%);
+}
+
+/* --- About Page Specifics --- */
+.journey-card {
+  background: linear-gradient(180deg, #64102d 0%, #4a0a21 100%);
+}
+
+/* --- Achievement Page Specifics --- */
+.active-tab {
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  color: #64102d;
+  font-weight: 700;
+}
+
+/* Animasi Putaran Vinyl (Record) */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.vinyl-spin {
+  animation: rotate 4s linear infinite;
+}
+
+/* Kartu Prestasi */
+.achievement-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.achievement-card:hover {
+  transform: translateY(-10px);
+  border-color: #4a0a21; /* Hover effect lebih gelap */
+  box-shadow: 0 20px 40px rgba(100, 16, 45, 0.3);
+}
