@@ -1,15 +1,21 @@
 <?php
+/**
+ * HALAMAN TAMBAH DOKUMEN - DASHBOARD SEKRETARIS
+ * Halaman form untuk mengunggah arsip baru ke sistem.
+ * File yang diunggah akan dikirim ke Cloud Storage (Supabase) via API.
+ */
 $page_title = 'Tambah Dokumen - Senandika';
 $asset_path = '../../../';
 include '../../../includes/head.php';
 require_once '../../../config/database.php';
 
-// Ambil kategori dari database
+// Mengambil daftar kategori arsip dari database untuk dropdown menu
 $kategori_query = $conn->query("SELECT id, nama_kategori FROM kategori_arsip");
 ?>
 
 <div class="d-flex">
 
+  <!-- Sidebar Navigasi -->
   <?php include '../../../includes/sidebar.php'; ?>
 
   <div class="main-content w-100">
@@ -28,7 +34,11 @@ $kategori_query = $conn->query("SELECT id, nama_kategori FROM kategori_arsip");
           Form Unggah Dokumen
         </h5>
 
-        <!-- TODO: Hubungkan action form ke handler upload backend -->
+        <!-- 
+          FORM UNGGAH
+          enctype="multipart/form-data" WAJIB ditambahkan untuk mendukung pengiriman file.
+          Action diarahkan ke proses-tambah-dokumen.php.
+        -->
         <form action="proses-tambah-dokumen.php" method="POST" enctype="multipart/form-data">
 
           <div class="mb-3">
@@ -80,22 +90,24 @@ $kategori_query = $conn->query("SELECT id, nama_kategori FROM kategori_arsip");
         </form>
       </div>
 
-    </div><!-- /content-area -->
+    </div>
 
+    <!-- Global Footer -->
     <?php include '../../../includes/footer.php'; ?>
   </div>
 
 </div>
 
+<!-- NOTIFIKASI ERROR (SWEETALERT) -->
 <?php if (isset($_GET['status'])): ?>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
       let status = '<?= $_GET['status'] ?>';
       let msg = '';
-      if(status === 'ext_error') msg = 'Ekstensi file tidak diizinkan!';
-      if(status === 'upload_error') msg = 'Terjadi kesalahan saat mengunggah file!';
-      if(status === 'size_error') msg = 'Ukuran file maksimal 5MB!';
-      if(status === 'db_error') msg = 'Gagal menyimpan ke database!';
+      if(status === 'ext_error')      msg = 'Ekstensi file tidak diizinkan!';
+      if(status === 'upload_error')   msg = 'Terjadi kesalahan saat mengunggah file!';
+      if(status === 'size_error')     msg = 'Ukuran file maksimal 5MB!';
+      if(status === 'db_error')       msg = 'Gagal menyimpan ke database!';
       if(status === 'supabase_error') msg = 'Gagal mengunggah ke Supabase! Code: <?= $_GET['code'] ?? "" ?>';
       
       if(msg) Swal.fire('Gagal!', msg, 'error');
@@ -103,4 +115,5 @@ $kategori_query = $conn->query("SELECT id, nama_kategori FROM kategori_arsip");
 </script>
 <?php endif; ?>
 
+<!-- Memuat Scripts -->
 <?php include '../../../includes/scripts.php'; ?>

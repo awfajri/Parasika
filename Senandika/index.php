@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <!-- 
+      DOKUMENTASI SECTION HEAD
+      Memuat metadata, stylesheet (Bootstrap, Google Fonts, Tailwind), dan icon.
+    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Elektronik Arsip dan Dokumen - Parasika</title>
+    
+    <!-- Link CSS Framework dan Fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Tailwind CSS CDN dengan konfigurasi Preflight disabled agar tidak konflik dengan Bootstrap -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -15,13 +23,17 @@
         }
       }
     </script>
+    
+    <!-- Custom CSS khusus untuk landing page Senandika -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="../assets/img/logo-parasika.png">
 </head>
 <body>
 
+    <!-- SECTION: HERO & NAVIGATION -->
     <div class="hero-wrapper">
         
+        <!-- Navbar Glassmorphism - Navigasi melayang dengan efek blur -->
         <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl glass-nav z-50 rounded-full px-6 py-3 flex items-center justify-between border border-white/10" style="background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px);">
           <a href="javascript:window.location.reload();" class="flex items-center gap-3 text-decoration-none">
             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
@@ -38,12 +50,14 @@
           </div>
         </nav>
 
+        <!-- Background Image Hero -->
         <div class="hero-img-container">
             <img src="assets/img/hero.jpg" alt="Kegiatan Parasika">
         </div>
 
     </div>
 
+    <!-- Main Content Hero - Judul dan Deskripsi singkat aplikasi -->
     <div class="container hero-content max-w-7xl mx-auto px-6 lg:px-24">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
@@ -72,6 +86,7 @@
         </div>
     </div>
 
+    <!-- SECTION: FITUR UTAMA -->
     <div id="fitur" class="container py-4 py-lg-5 fitur-section max-w-7xl mx-auto px-6 lg:px-24">
         <h2 class="section-title">Fitur <span class="text-dark">Senandika</span></h2>
         <div class="row g-4 justify-content-center">
@@ -96,12 +111,14 @@
         </div>
     </div>
 
+    <!-- SECTION: FAQ (Accordion) -->
     <div id="faq" class="container faq-section max-w-7xl mx-auto px-6 lg:px-24">
         <h2 class="section-title text-center mb-5">Frequently Asked<br><span class="text-dark">Question</span></h2>
         
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <div class="accordion" id="faqAccordion">
+                    <!-- Item FAQ 1 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
@@ -117,6 +134,7 @@
                         </div>
                     </div>
 
+                    <!-- Item FAQ 2 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
@@ -132,6 +150,7 @@
                         </div>
                     </div>
 
+                    <!-- Item FAQ 3 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
@@ -151,11 +170,13 @@
         </div>
     </div>
 
+    <!-- SECTION: FOOTER -->
     <div class="footer-wrapper">
         <div class="container max-w-7xl mx-auto px-6 lg:px-24">
             <div class="footer-card">
                 <div class="row h-100">
                     
+                    <!-- Footer Logo & Sosmed -->
                     <div class="col-lg-3 d-flex flex-column justify-content-between mb-4 mb-lg-0">
                         <div>
                             <img src="../assets/img/logo-parasika.png" alt="Logo" class="footer-logo">
@@ -167,12 +188,14 @@
                         </div>
                     </div>
 
+                    <!-- Footer Info Links -->
                     <div class="col-lg-3 mb-4 mb-lg-0">
                         <div class="footer-heading">INFORMATION</div>
                         <a href="#fitur" class="footer-link">Fitur</a>
                         <a href="#faq" class="footer-link">FAQ</a>
                     </div>
 
+                    <!-- Footer Internal App & Alamat -->
                     <div class="col-lg-3 d-flex flex-column justify-content-between mb-4 mb-lg-0">
                         <div>
                             <div class="footer-heading">INTERNAL APP</div>
@@ -185,6 +208,7 @@
                         </div>
                     </div>
 
+                    <!-- Footer Call to Action & Kontak -->
                     <div class="col-lg-3 d-flex flex-column align-items-lg-end text-lg-end">
                         <div>
                             <button class="btn-request">Request a call</button>
@@ -200,6 +224,7 @@
                 </div>
             </div>
 
+            <!-- Copyright Footer -->
             <div class="footer-bottom-text">
                 <span>© 2026 — Copyright Kelompok 4</span>
                 <a href="#">Privacy Policy | Term of Service</a>
@@ -207,6 +232,7 @@
         </div>
     </div>
 
+    <!-- Floating Action Button (FAB) untuk kembali ke web utama -->
     <div class="fab-back-container">
         <a href="../index.html" class="fab-back" title="Kembali ke Website Utama">
             <img src="../assets/img/logo-parasika.png" alt="Logo">
@@ -214,6 +240,7 @@
         </a>
     </div>
 
+    <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

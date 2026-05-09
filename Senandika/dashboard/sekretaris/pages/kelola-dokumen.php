@@ -1,4 +1,9 @@
 <?php
+/**
+ * MODUL KELOLA DOKUMEN - DASHBOARD SEKRETARIS
+ * Halaman utama untuk manajemen arsip dokumen. 
+ * Sekretaris dapat melihat, memfilter, mencari, mengedit, dan menghapus dokumen.
+ */
 require_once '../../../config/database.php';
 $page_title = 'Kelola Dokumen - Senandika';
 $asset_path = '../../../';
@@ -7,24 +12,24 @@ include '../../../includes/head.php';
 
 <div class="d-flex">
 
+  <!-- Sidebar Navigasi Sekretaris -->
   <?php include '../../../includes/sidebar.php'; ?>
 
-  <!-- Main Content -->
   <div class="main-content w-100">
     <div class="content-area">
+      <!-- Tombol Toggle Menu Mobile -->
       <button id="sidebarToggle" class="btn btn-light d-md-none mb-3">
         <i class="bi bi-list"></i> Menu
       </button>
 
-      <!-- Section Hero -->
       <div class="section-hero">
         <h1>Selamat Datang, Sekertaris!</h1>
       </div>
 
-      <!-- Table Card -->
+      <!-- KONTEN UTAMA: TABEL DOKUMEN -->
       <div class="table-card">
 
-        <!-- Toolbar -->
+        <!-- Toolbar: Fitur Pencarian Live dan Tombol Tambah -->
         <div class="toolbar">
           <div class="search-box">
             <i class="bi bi-search"></i>
@@ -39,7 +44,7 @@ include '../../../includes/head.php';
           </a>
         </div>
 
-        <!-- Filter Kategori -->
+        <!-- Filter Kategori: Tombol Filter Dinamis -->
         <div class="px-3 pt-3 d-flex gap-2 flex-wrap">
           <?php
           $kategori_list = ['Semua', 'Surat masuk', 'Surat keluar', 'Proposal', 'LPJ', 'AD/ART', 'SK'];
@@ -53,8 +58,8 @@ include '../../../includes/head.php';
           <?php endforeach; ?>
         </div>
 
-        <!-- Table -->
         <div class="p-3 pt-3">
+          <!-- Tampilan Toast / Alert Sukses jika ada parameter status -->
           <?php if (isset($_GET['status'])): ?>
           <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -78,6 +83,11 @@ include '../../../includes/head.php';
               </thead>
               <tbody>
                 <?php
+                /**
+                 * LOGIKA PENAMPILAN DATA DOKUMEN
+                 * Mengambil data dari tabel dokumen, JOIN dengan kategori.
+                 * Mendukung filter berdasarkan kategori yang dipilih user.
+                 */
                 $active_kat = $_GET['kategori'] ?? 'Semua';
                 $where_clause = "";
                 if ($active_kat !== 'Semua') {
@@ -102,7 +112,7 @@ include '../../../includes/head.php';
                 $i = 1;
                 while ($doc = $result->fetch_assoc()): 
                 
-                  // Format ukuran file
+                  // Konversi Ukuran File dari bytes ke format yang mudah dibaca (KB/MB)
                   $bytes = $doc['ukuran_file'];
                   if ($bytes >= 1048576) {
                       $ukuran = number_format($bytes / 1048576, 2) . ' MB';
@@ -112,7 +122,6 @@ include '../../../includes/head.php';
                       $ukuran = $bytes . ' bytes';
                   }
                   
-                  // Format tanggal
                   $tanggal = date('d M Y', strtotime($doc['created_at']));
                 ?>
                 <tr>
@@ -127,17 +136,15 @@ include '../../../includes/head.php';
                   <td><?= $tanggal ?></td>
                   <td>
                     <div class="action-btns">
-                      <!-- View -->
+                      <!-- Tombol Aksi: Lihat File, Edit Data, dan Hapus (via SweetAlert) -->
                       <a href="<?= htmlspecialchars($doc['file_url']) ?>" target="_blank"
                           class="btn-view" title="Lihat">
                         <i class="bi bi-eye-fill"></i>
                       </a>
-                      <!-- Edit -->
                       <a href="edit-dokumen.php?id=<?= $doc['id'] ?>"
                           class="btn-edit" title="Edit">
                         <i class="bi bi-pencil"></i>
                       </a>
-                      <!-- Delete -->
                       <a href="hapus-dokumen.php?id=<?= $doc['id'] ?>"
                           class="btn-del" title="Hapus">
                         <i class="bi bi-trash3"></i>
@@ -150,7 +157,7 @@ include '../../../includes/head.php';
             </table>
           </div>
 
-          <!-- Pagination placeholder -->
+          <!-- Informasi jumlah data yang ditampilkan -->
           <div class="d-flex justify-content-between align-items-center mt-4 pb-2" style="font-size:0.85rem; color:var(--text-muted); font-family:var(--font-head);">
             <span>Menampilkan <?= $result->num_rows ?> dokumen</span>
             <nav>
@@ -171,12 +178,16 @@ include '../../../includes/head.php';
 
     </div><!-- /content-area -->
 
-
   </div><!-- /main-content -->
 
 </div><!-- /d-flex -->
 
 <script>
+/**
+ * FUNGSI PENCARIAN LIVE (Client-side)
+ * Melakukan filtering pada baris tabel secara real-time berdasarkan input keyword.
+ * @param {string} query - Kata kunci pencarian
+ */
 function filterTable(query) {
   const rows = document.querySelectorAll('#dokumenTable tbody tr');
   query = query.toLowerCase();

@@ -1,12 +1,19 @@
 <?php
+/**
+ * HALAMAN DETAIL DOKUMEN - DASHBOARD SEKRETARIS
+ * Menampilkan rincian metadata dokumen secara mendalam.
+ */
 $page_title = 'Detail Dokumen - Senandika';
 $asset_path = '../../../';
 include '../../../includes/head.php';
 
-// TODO: Ambil data dokumen berdasarkan $id dari database
+// Menangkap ID dari parameter URL
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Placeholder data – ganti dengan query database
+/**
+ * PLACEHOLDER DATA 
+ * Bagian ini dapat dihubungkan ke query database untuk menarik rincian lengkap dokumen.
+ */
 $dokumen = [
   'id'       => $id,
   'nama'     => 'Surat Peminjaman Aula',
@@ -14,24 +21,26 @@ $dokumen = [
   'ukuran'   => '2MB',
   'tanggal'  => '2 Mei 2026',
   'diunggah_oleh' => 'Senandika',
-  'file_path' => '#',   // TODO: path file sesungguhnya
+  'file_path' => '#',   
 ];
 ?>
 
 <div class="d-flex">
 
+  <!-- Sidebar Navigasi -->
   <?php include '../../../includes/sidebar.php'; ?>
 
   <div class="main-content w-100">
     <div class="content-area">
       <button id="sidebarToggle" class="btn btn-light d-md-none mb-3">
-  <i class="bi bi-list"></i> Menu
-</button>
+        <i class="bi bi-list"></i> Menu
+      </button>
 
       <div class="section-hero mb-4">
         <h1>Detail Dokumen</h1>
       </div>
 
+      <!-- KARTU INFORMASI RINCIAN -->
       <div class="card-custom" style="max-width:680px;">
         <h5 class="mb-4" style="font-family:var(--font-head); font-weight:700;">
           Informasi Dokumen
@@ -62,6 +71,7 @@ $dokumen = [
           </tr>
         </table>
 
+        <!-- Tombol Aksi Lanjutan -->
         <div class="d-flex gap-3 mt-4">
           <a href="<?= htmlspecialchars($dokumen['file_path']) ?>"
               class="btn-add" target="_blank" download>
@@ -79,9 +89,11 @@ $dokumen = [
       </div>
 
     </div>
+    <!-- Global Footer -->
     <?php include '../../../includes/footer.php'; ?>
   </div>
 
 </div>
 
+<!-- Memuat Scripts -->
 <?php include '../../../includes/scripts.php'; ?>

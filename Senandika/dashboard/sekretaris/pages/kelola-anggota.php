@@ -1,19 +1,29 @@
 <?php
+/**
+ * MODUL KELOLA ANGGOTA - DASHBOARD SEKRETARIS
+ * Modul ini berfungsi untuk memvalidasi permintaan pendaftaran akun baru (Approval).
+ * Fitur: Konfirmasi (Accept) dengan penentuan Role, Penolakan (Reject), dan Manajemen Anggota Aktif.
+ */
 session_start();
 $page_title = 'Kelola Anggota - Senandika';
 $asset_path = '../../../';
 require_once '../../../config/database.php';
 
-// Proses Terima/Tolak Anggota
+/**
+ * LOGIKA KONFIRMASI / PENOLAKAN REGISTRASI
+ * Menangani request POST dari form konfirmasi.
+ */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $id_user = (int)$_POST['user_id'];
     
     if ($_POST['action'] === 'approve') {
+        // Jika disetujui, update status menjadi 'approved' dan tentukan role-nya
         $role = $_POST['role'];
         $stmt = $conn->prepare("UPDATE users SET status = 'approved', role = ? WHERE id = ?");
         $stmt->bind_param("si", $role, $id_user);
         if ($stmt->execute()) { $msg = "approved"; }
     } elseif ($_POST['action'] === 'reject') {
+        // Jika ditolak, hapus data registrasi dari tabel users
         $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
         $stmt->bind_param("i", $id_user);
         if ($stmt->execute()) { $msg = "rejected"; }
@@ -22,7 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     exit;
 }
 
-// Proses Hapus Anggota Aktif
+/**
+ * LOGIKA PENGHAPUSAN ANGGOTA AKTIF
+ * Menghapus akun yang sudah terverifikasi (jika diperlukan).
+ */
 if (isset($_GET['hapus'])) {
     $id_hapus = (int)$_GET['hapus'];
     $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
@@ -35,9 +48,12 @@ if (isset($_GET['hapus'])) {
 include '../../../includes/head.php';
 ?>
 <div class="d-flex">
+  <!-- Sidebar Navigasi Sekretaris -->
   <?php include '../../../includes/sidebar.php'; ?>
+
   <div class="main-content w-100">
     <div class="content-area">
+      <!-- Sidebar Toggle Mobile -->
       <button id="sidebarToggle" class="btn btn-light d-md-none mb-3">
         <i class="bi bi-list"></i> Menu
       </button>
@@ -46,17 +62,19 @@ include '../../../includes/head.php';
         <h1>Kelola Anggota & Kepengurusan</h1>
       </div>
 
+      <!-- NOTIFIKASI STATUS AKSI (SWEETALERT) -->
       <?php if (isset($_GET['status'])): ?>
       <script>
         document.addEventListener('DOMContentLoaded', function() {
             let status = '<?= $_GET['status'] ?>';
             if(status === 'approved') Swal.fire('Berhasil!', 'Akun berhasil dikonfirmasi.', 'success');
             if(status === 'rejected') Swal.fire('Ditolak!', 'Registrasi akun ditolak/dihapus.', 'success');
-            if(status === 'deleted') Swal.fire('Dihapus!', 'Data anggota aktif dihapus.', 'success');
+            if(status === 'deleted')  Swal.fire('Dihapus!', 'Data anggota aktif dihapus.', 'success');
         });
       </script>
       <?php endif; ?>
 
+      <!-- SECTION: PERMINTAAN REGISTRASI (Antrean Approval) -->
       <div class="card-custom mb-4 border-2">
         <h5 class="mb-3 fw-bold" style="font-family:var(--font-head);">
            <i class="bi bi-person-fill-exclamation text-warning me-2"></i> Permintaan Registrasi
@@ -73,6 +91,7 @@ include '../../../includes/head.php';
             </thead>
             <tbody>
               <?php
+              // Menarik data user yang statusnya masih 'pending'
               $res_pending = $conn->query("SELECT * FROM users WHERE status = 'pending' ORDER BY created_at ASC");
               $i = 1;
               if ($res_pending->num_rows > 0):
@@ -83,6 +102,7 @@ include '../../../includes/head.php';
                 <td class="fw-bold"><?= htmlspecialchars($row['nama_lengkap']) ?></td>
                 <td><?= htmlspecialchars($row['npm']) ?></td>
                 <td>
+                  <!-- Form Konfirmasi: Penentuan Role (Anggota/Ketua/Sekretaris) -->
                   <form method="POST" class="d-flex gap-2 align-items-center m-0">
                     <input type="hidden" name="user_id" value="<?= $row['id'] ?>">
                     <select name="role" class="form-select form-select-sm" style="width:140px;" required>
@@ -93,6 +113,7 @@ include '../../../includes/head.php';
                     <button type="submit" name="action" value="approve" class="btn btn-sm btn-success text-white" title="Terima">
                       <i class="bi bi-check-lg"></i> Terima
                     </button>
+                    <!-- Tombol Tolak memicu SweetAlert (btn-tolak) di main.js -->
                     <button type="button" class="btn btn-sm btn-danger text-white btn-tolak" title="Tolak">
                       <i class="bi bi-x-lg"></i> Tolak
                     </button>
@@ -107,6 +128,7 @@ include '../../../includes/head.php';
         </div>
       </div>
 
+      <!-- SECTION: DAFTAR ANGGOTA AKTIF -->
       <div class="card-custom">
         <h5 class="mb-3 fw-bold" style="font-family:var(--font-head);">Daftar Anggota Aktif</h5>
         <div class="table-responsive">
@@ -122,6 +144,7 @@ include '../../../includes/head.php';
             </thead>
             <tbody>
               <?php
+              // Menarik data user yang sudah di-'approved'
               $res_aktif = $conn->query("SELECT * FROM users WHERE status = 'approved' ORDER BY role DESC, created_at DESC");
               $j = 1;
               while ($row = $res_aktif->fetch_assoc()):
@@ -132,12 +155,13 @@ include '../../../includes/head.php';
                 <td><?= htmlspecialchars($row['npm']) ?></td>
                 <td><span class="badge-kategori"><?= ucfirst($row['role']) ?></span></td>
                 <td>
+                  <!-- Sekretaris tidak bisa menghapus dirinya sendiri dari sini -->
                   <?php if ($row['id'] !== $_SESSION['user_id']): ?>
                   <a href="?hapus=<?= $row['id'] ?>" class="btn-del">
                     <i class="bi bi-trash3"></i> Hapus
                   </a>
                   <?php else: ?>
-                  <span class="text-muted small">Anda</span>
+                  <span class="text-muted small">Anda (Sekretaris)</span>
                   <?php endif; ?>
                 </td>
               </tr>
@@ -150,4 +174,6 @@ include '../../../includes/head.php';
     </div>
   </div>
 </div>
+
+<!-- Scripts Global -->
 <?php include '../../../includes/scripts.php'; ?>

@@ -1,12 +1,21 @@
 <?php
+/**
+ * HALAMAN EDIT DOKUMEN - DASHBOARD SEKRETARIS
+ * Modul ini digunakan untuk mengubah metadata dokumen (Nama, Kategori) 
+ * atau mengganti file fisik yang sudah tersimpan.
+ */
 $page_title = 'Edit Dokumen - Senandika';
 $asset_path = '../../../';
 include '../../../includes/head.php';
 require_once '../../../config/database.php';
 
+// Menangkap ID dokumen yang akan diedit dari parameter URL
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Ambil data dokumen berdasarkan $id dari database
+/**
+ * PENGAMBILAN DATA DOKUMEN
+ * Mengambil data lama dari database untuk ditampilkan di form sebagai default value.
+ */
 $stmt = $conn->prepare("
     SELECT d.id, d.nama_dokumen as nama, k.nama_kategori as kategori 
     FROM dokumen d 
@@ -19,7 +28,7 @@ $result = $stmt->get_result();
 $dokumen = $result->fetch_assoc();
 $stmt->close();
 
-// Jika dokumen tidak ditemukan, hindari error dengan set default
+// Fallback jika dokumen tidak ditemukan untuk menghindari warning PHP
 if (!$dokumen) {
     $dokumen = [
         'id'       => $id,
@@ -31,11 +40,11 @@ if (!$dokumen) {
 
 <div class="d-flex">
 
+  <!-- Sidebar Navigasi -->
   <?php include '../../../includes/sidebar.php'; ?>
 
   <div class="main-content w-100">
     <div class="content-area">
-
       <button id="sidebarToggle" class="btn btn-light d-md-none mb-3">
         <i class="bi bi-list"></i> Menu
       </button>
@@ -44,6 +53,7 @@ if (!$dokumen) {
         <h1>Edit Dokumen</h1>
       </div>
 
+      <!-- Notifikasi Error jika ID tidak valid -->
       <?php if(empty($dokumen['nama']) && $id !== 0): ?>
           <div class="alert alert-danger" style="max-width:680px;">Dokumen tidak ditemukan di database.</div>
       <?php endif; ?>
@@ -53,7 +63,9 @@ if (!$dokumen) {
           Form Edit Dokumen
         </h5>
 
+        <!-- Form Edit: Action diarahkan ke proses-edit-dokumen.php -->
         <form action="proses-edit-dokumen.php" method="POST" enctype="multipart/form-data">
+          <!-- Hidden Input untuk mengirimkan ID Dokumen -->
           <input type="hidden" name="id" value="<?= htmlspecialchars($dokumen['id']) ?>">
 
           <div class="mb-3">
@@ -71,10 +83,12 @@ if (!$dokumen) {
             <select name="kategori" class="form-select" required>
               <option value="" disabled>Pilih kategori...</option>
               <?php
-              // Note: Pastikan daftar ini sesuai dengan data di tabel kategori_arsip
+              /**
+               * DAFTAR KATEGORI
+               * Loop untuk menampilkan kategori dan menandai (selected) kategori lama.
+               */
               $kategori_list = ['Surat Masuk','Surat Keluar','Proposal','LPJ','AD/ART','SK'];
               foreach ($kategori_list as $kat):
-                // Handle case-insensitive comparison
                 $sel = (strtolower($kat) === strtolower($dokumen['kategori'])) ? 'selected' : '';
               ?>
               <option value="<?= $kat ?>" <?= $sel ?>><?= $kat ?></option>
@@ -88,7 +102,7 @@ if (!$dokumen) {
             </label>
             <input type="file" name="file_dokumen" class="form-control"
                   accept=".pdf,.doc,.docx,.xls,.xlsx">
-            <small class="text-muted">Kosongkan jika tidak ingin mengganti file.</small>
+            <small class="text-muted">Kosongkan jika tidak ingin mengganti file lama.</small>
           </div>
 
           <div class="d-flex gap-3">
@@ -109,4 +123,5 @@ if (!$dokumen) {
 
 </div>
 
+<!-- Memuat Scripts -->
 <?php include '../../../includes/scripts.php'; ?>
