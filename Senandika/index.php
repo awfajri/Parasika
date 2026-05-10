@@ -34,42 +34,48 @@
     <div class="hero-wrapper">
         
         <!-- Navbar Glassmorphism - Navigasi melayang dengan efek blur -->
-        <nav id="mainNav" class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl glass-nav z-50 rounded-full px-6 py-3 flex items-center justify-between border border-white/10" style="background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px);">
-          <div class="nav-header">
-            <a href="javascript:window.location.reload();" class="flex items-center gap-3 text-decoration-none" style="color: white !important; text-decoration: none !important;">
-              <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <img src="../assets/img/logo-parasika.png" alt="Logo Parasika" class="w-10 h-10 rounded-full object-cover bg-white p-1" />
-              </div>
-              <span class="nav-logo-text">Senandika</span>
+        
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl z-50 flex flex-col">
+        <div class="flex justify-between items-center w-full glass-nav-container rounded-[34px] p-2">
+            <a href="index.php" class="flex items-center gap-3 pl-2">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                    <img src="assets/img/logo.jpg" alt="Logo Parasika" class="w-10 h-10 rounded-full object-cover bg-white p-1" />
+                </div>
+                <span class="text-white font-bold text-[24px] hidden sm:block">Parasika</span>
             </a>
-            <button class="hamburger-btn" onclick="toggleMobileMenu()">
-              <i class="bi bi-list" id="menuIcon"></i>
-            </button>
-          </div>
-
-          <!-- Desktop Links -->
-          <div class="desktop-links flex items-center gap-6">
-            <a href="#fitur" class="text-white/80 hover:text-white text-sm font-medium transition-colors text-decoration-none">Fitur</a>
-            <a href="#faq" class="text-white/80 hover:text-white text-sm font-medium transition-colors text-decoration-none">FAQ</a>
-            <a href="login.php" class="bg-white text-[#6e1a37] px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all text-decoration-none hover:bg-white/90">
-              <i class="bi bi-box-arrow-in-right"></i> Login
-            </a>
-          </div>
-
-          <!-- Mobile Menu Content -->
-          <div class="mobile-menu-content">
-            <a href="#fitur" class="mobile-link" onclick="toggleMobileMenu()">
-              Fitur <i class="bi bi-chevron-right"></i>
-            </a>
-            <a href="#faq" class="mobile-link" onclick="toggleMobileMenu()">
-              FAQ <i class="bi bi-chevron-right"></i>
-            </a>
-            <div class="mobile-btn-group">
-              <a href="registrasi.php" class="btn-mobile-register">Register</a>
-              <a href="login.php" class="btn-mobile-login">Login</a>
+            <div class="hidden md:flex items-center gap-6 pr-6">
+                <a href="#fitur" class="text-white/80 hover:text-white text-sm font-medium transition-colors text-decoration-none">Fitur</a>
+                <a href="#faq" class="text-white/80 hover:text-white text-sm font-medium transition-colors text-decoration-none">FAQ</a>
+                <a href="registrasi.php" class="text-white/80 hover:text-white text-sm font-medium transition-colors text-decoration-none">Register</a>
+                <a href="login.php" class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-all text-decoration-none">
+                    <i class="bi bi-box-arrow-in-right"></i> Login
+                </a>
             </div>
-          </div>
-        </nav>
+            <button id="navToggle" class="hamburger-btn md:hidden">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="mobile-menu">
+            <a href="#fitur" class="mobile-menu-item">
+                <span>Fitur</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <div class="mobile-menu-divider"></div>
+            <a href="#faq" class="mobile-menu-item">
+                <span>FAQ</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <div class="mobile-menu-divider"></div>
+            <div class="nav-btn-container">
+                <a href="registrasi.php" class="btn-outline-white">Register</a>
+                <a href="login.php" class="btn-fill-white">Login</a>
+            </div>
+        </div>
+    </nav>
+
 
         <!-- Background Image Hero -->
         <div class="hero-img-container">
@@ -261,26 +267,20 @@
         </a>
     </div>
 
-    <script>
-      /**
-       * Fungsi untuk toggle (buka/tutup) mobile menu
-       */
-      function toggleMobileMenu() {
-        const nav = document.getElementById("mainNav");
-        const menuIcon = document.getElementById("menuIcon");
-        
-        nav.classList.toggle("active");
-        
-        if (nav.classList.contains("active")) {
-          menuIcon.classList.remove("bi-list");
-          menuIcon.classList.add("bi-x-lg");
-        } else {
-          menuIcon.classList.remove("bi-x-lg");
-          menuIcon.classList.add("bi-list");
-        }
-      }
-    </script>
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (navToggle && mobileMenu) {
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+        }
+    </script>
+
 </body>
 </html>

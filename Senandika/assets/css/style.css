@@ -424,129 +424,28 @@ body {
   padding: 0 16px 0 12px;
 }
 
-/* --- RESPONSIVE & MOBILE NAVBAR --- */
-@media (max-width: 768px) {
-  .glass-nav {
-    width: 90% !important;
-    max-width: none !important;
-    top: 20px !important;
-    padding: 8px !important;
-    border-radius: 34px !important;
-    background: rgba(0, 0, 0, 0.35) !important;
-    backdrop-filter: blur(12px) !important;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    height: auto !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    z-index: 2000;
+/* --- RESPONSIVE --- */
+@media (max-width: 991px) {
+  .navbar-custom {
+    width: 92%;
+    padding: 12px 20px;
+    top: 30px;
+    border-radius: 30px;
   }
-
-  .nav-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  .navbar-brand {
+    margin-right: auto;
   }
-
-  .nav-header a {
-    color: white !important;
-    text-decoration: none !important;
+  .navbar-collapse {
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 15px;
   }
-
-  .nav-logo-text {
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    color: white !important;
-    text-decoration: none !important;
-  }
-
-  .hamburger-btn {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-
-  .mobile-menu-content {
-    display: none;
-    flex-direction: column;
-    padding: 24px 12px 12px 12px;
-    gap: 12px;
-    width: 100%;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.4s ease;
-  }
-
-  .glass-nav.active .mobile-menu-content {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .mobile-link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 12px 0;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .mobile-link:last-child {
-    border-bottom: none;
-  }
-
-  .mobile-link i.bi-chevron-right {
-    font-size: 0.9rem;
-    opacity: 0.7;
-  }
-
-  .mobile-btn-group {
-    display: flex;
-    gap: 10px;
-    width: 100%;
+  .btn-login {
+    margin-left: 0;
     margin-top: 10px;
+    width: 100%;
   }
-
-  .mobile-btn-group a {
-    flex: 1;
-    text-align: center;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .btn-mobile-register {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .btn-mobile-login {
-    background: white;
-    color: var(--primary-maroon);
-  }
-
-  /* Hide desktop links on mobile */
-  .desktop-links {
-    display: none !important;
-  }
-
-  /* Other Mobile Fixes */
   .hero-img-container {
     border-radius: 30px;
     min-height: 350px;
@@ -561,17 +460,32 @@ body {
     margin: 0 auto;
   }
   .stat-container {
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
     margin-top: 30px;
+  }
+  .accordion-body {
+    padding-left: 0;
+  }
+  .fab-back-container {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-wrapper {
+    padding: 10px;
+  }
+  .navbar-custom {
+    top: 20px;
+  }
+  .stat-container {
+    flex-direction: column;
+    align-items: center;
   }
   .stat-box {
     width: 100%;
     justify-content: center;
-  }
-  .accordion-body {
-    padding-left: 0;
   }
   .footer-card {
     padding: 30px 20px;
@@ -581,11 +495,149 @@ body {
     text-align: center;
     gap: 10px;
   }
+  .col-lg-3 {
+    margin-bottom: 30px;
+  }
 }
 
-@media (min-width: 769px) {
+/* Mobile Navigation Styles (Figma Specification) */
+.glass-nav-container {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hamburger-btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background-color: white;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+.mobile-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  padding: 32px;
+  display: none;
+  flex-direction: column;
+  gap: 18px;
+  border-radius: 34px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 90;
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
+.mobile-menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 8px 0;
+}
+
+.mobile-menu-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
   .hamburger-btn,
-  .mobile-menu-content {
+  .mobile-menu {
     display: none !important;
   }
+}
+
+/* Mobile Navigation Styles for Senandika Landing */
+.nav-btn-container {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.btn-fill-white {
+  background-color: white;
+  color: #4a0a21;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-align: center;
+  font-weight: 700;
+  flex: 1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-align: center;
+  font-weight: 700;
+  flex: 1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-fill-maroon:hover {
+  background-color: #4a0a21;
+}
+
+.btn-outline-maroon:hover {
+  background-color: rgba(100, 16, 45, 0.1);
 }
