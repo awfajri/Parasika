@@ -5,6 +5,7 @@
  * Menampilkan ringkasan statistik jumlah surat yang tersedia di sistem.
  */
 $page_title = 'Dashboard Anggota - Senandika';
+$required_role = 'anggota';
 $asset_path = '../../'; // Path ke folder assets (css/js) relatif dari file ini
 $base_path  = '../../';
 require_once '../../includes/auth.php'; // Proteksi session agar hanya user login yang bisa akses

@@ -4,6 +4,7 @@
  * Halaman utama untuk Sekretaris sebagai admin sistem.
  * Menampilkan statistik dokumen, distribusi kategori, dan log aktivitas terbaru.
  */
+$required_role = 'sekretaris';
 $page_title = 'Dashboard - Senandika';
 $asset_path = '../../';
 $base_path  = '../../';

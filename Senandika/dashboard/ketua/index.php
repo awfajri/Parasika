@@ -4,6 +4,7 @@
  * Halaman utama untuk user dengan role 'ketua'.
  * Fokus pada pemantauan statistik dan log aktivitas pengunggahan dokumen.
  */
+$required_role = 'ketua';
 $page_title = 'Dashboard Ketua - Senandika';
 $asset_path = '../../';
 $base_path  = '../../';
