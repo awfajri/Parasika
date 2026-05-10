@@ -18,25 +18,30 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body class="bg-[#F8F9FA] text-gray-900">
-    <nav
+    <!-- Navigation -->
+    <nav id="mainNav"
       class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl glass-nav z-50 rounded-full px-6 py-3 flex items-center justify-between border border-white/10"
-      style="background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px)"
     >
-      <a href="index.html" class="flex items-center gap-3 no-underline">
-        <div
-          class="w-10 h-10 bg-white rounded-full flex items-center justify-center"
-        >
-          <img
-            src="assets/img/logo-parasika.png"
-            alt="Logo Parasika"
-            class="w-10 h-10 rounded-full object-cover bg-white p-1"
-          />
-        </div>
-        <span class="text-white font-bold text-lg hidden sm:block"
-          >Parasika</span
-        >
-      </a>
-      <div class="flex items-center gap-6">
+      <div class="nav-header">
+        <a href="index.html" class="flex items-center gap-3 no-underline" style="color: white !important; text-decoration: none !important;">
+          <div
+            class="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+          >
+            <img
+              src="assets/img/logo-parasika.png"
+              alt="Logo Parasika"
+              class="w-10 h-10 rounded-full object-cover bg-white p-1"
+            />
+          </div>
+          <span class="nav-logo-text">Parasika</span>
+        </a>
+        <button class="hamburger-btn" onclick="toggleMobileMenu()">
+          <i class="bi bi-list" id="menuIcon"></i>
+        </button>
+      </div>
+
+      <!-- Desktop Links -->
+      <div class="desktop-links items-center gap-6 flex">
         <a
           href="about.html"
           class="text-white/80 hover:text-white text-sm font-medium transition-colors no-underline"
@@ -49,9 +54,22 @@
         >
         <a
           href="Senandika/index.php"
-          class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-all no-underline"
+          class="bg-white text-[#64102d] px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all no-underline hover:bg-white/90"
         >
           <i class="bi bi-box-arrow-in-right"></i> Internal App
+        </a>
+      </div>
+
+      <!-- Mobile Menu Content -->
+      <div class="mobile-menu-content">
+        <a href="about.html" class="mobile-link">
+          About <i class="bi bi-chevron-right"></i>
+        </a>
+        <a href="achievement.html" class="mobile-link">
+          Achievement <i class="bi bi-chevron-right"></i>
+        </a>
+        <a href="Senandika/index.php" class="mobile-link">
+          Internal App <i class="bi bi-chevron-right"></i>
         </a>
       </div>
     </nav>
@@ -392,6 +410,24 @@
     </footer>
 
     <script>
+      /**
+       * Fungsi untuk toggle (buka/tutup) mobile menu
+       */
+      function toggleMobileMenu() {
+        const nav = document.getElementById("mainNav");
+        const menuIcon = document.getElementById("menuIcon");
+        
+        nav.classList.toggle("active");
+        
+        if (nav.classList.contains("active")) {
+          menuIcon.classList.remove("bi-list");
+          menuIcon.classList.add("bi-x-lg");
+        } else {
+          menuIcon.classList.remove("bi-x-lg");
+          menuIcon.classList.add("bi-list");
+        }
+      }
+
       /**
        * Berpindah antar tab (Choir/Dance)
        * @param {string} tab - ID tab yang ingin ditampilkan ('choir' atau 'dance')
