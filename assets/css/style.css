@@ -68,7 +68,9 @@ body {
   box-shadow: 0 20px 40px rgba(100, 16, 45, 0.3);
 }
 
-/* Mobile Navigation Styles (Figma Specification) */
+/* =========================================
+   NEW NAVBAR RESPONSIVE LOGIC (PURE CSS)
+   ========================================= */
 .glass-nav-container {
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(12px);
@@ -76,10 +78,24 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.brand-text {
+  color: white;
+  font-weight: 700;
+  font-size: 24px;
+  display: none; /* Sembunyikan teks Parasika di Mobile */
+}
+
+.desktop-nav {
+  display: none; /* Sembunyikan menu Desktop di Mobile */
+  align-items: center;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .hamburger-btn {
   width: 48px;
   height: 48px;
-  display: flex;
+  display: flex; /* Tampilkan hamburger di Mobile */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -102,11 +118,9 @@ body {
 .hamburger-btn.active span:nth-child(1) {
   transform: translateY(8.5px) rotate(45deg);
 }
-
 .hamburger-btn.active span:nth-child(2) {
   opacity: 0;
 }
-
 .hamburger-btn.active span:nth-child(3) {
   transform: translateY(-8.5px) rotate(-45deg);
 }
@@ -117,7 +131,7 @@ body {
   left: 0;
   width: 100%;
   padding: 32px;
-  display: none;
+  display: none; /* Sembunyikan dropdown default */
   flex-direction: column;
   gap: 18px;
   border-radius: 34px;
@@ -130,7 +144,7 @@ body {
 }
 
 .mobile-menu.active {
-  display: flex;
+  display: flex; /* Muncul saat di toggle via JS */
 }
 
 .mobile-menu-item {
@@ -162,9 +176,20 @@ body {
   }
 }
 
-@media (min-width: 768px) {
-  .hamburger-btn,
-  .mobile-menu {
+/* =========================================
+   DESKTOP OVERRIDES (Layar >= 768px)
+   ========================================= */
+@media screen and (min-width: 768px) {
+  .brand-text {
+    display: block !important;
+  }
+  .desktop-nav {
+    display: flex !important;
+  }
+  .hamburger-btn {
     display: none !important;
   }
+  .mobile-menu {
+    display: none !important;
+  } /* Paksa mati di Desktop */
 }

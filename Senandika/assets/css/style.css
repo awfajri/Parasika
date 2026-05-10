@@ -37,6 +37,7 @@ body {
 
 /* NAVBAR */
 .navbar-custom {
+  text-decoration: none;
   position: fixed;
   top: 40px;
   left: 50%;
@@ -53,6 +54,7 @@ body {
   transition: all 0.3s ease;
 }
 .navbar-custom .nav-link {
+  text-decoration: none;
   color: rgba(255, 255, 255, 0.85) !important;
   font-size: 0.95rem;
   font-weight: 500;
@@ -72,6 +74,7 @@ body {
   padding: 2px;
 }
 .navbar-brand {
+  text-decoration: none !important;
   color: white !important;
   font-weight: 600;
   font-size: 1rem;
@@ -500,7 +503,9 @@ body {
   }
 }
 
-/* Mobile Navigation Styles (Figma Specification) */
+/* =========================================
+   NEW NAVBAR RESPONSIVE LOGIC (PURE CSS)
+   ========================================= */
 .glass-nav-container {
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(12px);
@@ -508,10 +513,24 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.brand-text {
+  color: white;
+  font-weight: 700;
+  font-size: 24px;
+  display: none; /* Sembunyikan teks Parasika di Mobile */
+}
+
+.desktop-nav {
+  display: none; /* Sembunyikan menu Desktop di Mobile */
+  align-items: center;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .hamburger-btn {
   width: 48px;
   height: 48px;
-  display: flex;
+  display: flex; /* Tampilkan hamburger di Mobile */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -534,11 +553,9 @@ body {
 .hamburger-btn.active span:nth-child(1) {
   transform: translateY(8.5px) rotate(45deg);
 }
-
 .hamburger-btn.active span:nth-child(2) {
   opacity: 0;
 }
-
 .hamburger-btn.active span:nth-child(3) {
   transform: translateY(-8.5px) rotate(-45deg);
 }
@@ -549,7 +566,7 @@ body {
   left: 0;
   width: 100%;
   padding: 32px;
-  display: none;
+  display: none; /* Sembunyikan dropdown default */
   flex-direction: column;
   gap: 18px;
   border-radius: 34px;
@@ -562,7 +579,7 @@ body {
 }
 
 .mobile-menu.active {
-  display: flex;
+  display: flex; /* Muncul saat di toggle via JS */
 }
 
 .mobile-menu-item {
@@ -594,50 +611,73 @@ body {
   }
 }
 
-@media (min-width: 768px) {
-  .hamburger-btn,
-  .mobile-menu {
-    display: none !important;
-  }
-}
-
-/* Mobile Navigation Styles for Senandika Landing */
+/* ── CUSTOM BUTTON STYLE (FAIL-SAFE) ── */
 .nav-btn-container {
   display: flex;
   gap: 12px;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
-.btn-fill-white {
-  background-color: white;
-  color: #4a0a21;
-  padding: 12px 24px;
-  border-radius: 50px;
+/* Button Login (Solid Fill) */
+.btn-fill-maroon {
+  background-color: #ffffff !important;
+  color: #4a0a21 !important;
+  padding: 10px 24px !important;
+  border-radius: 50px !important;
   text-align: center;
   font-weight: 700;
-  flex: 1;
-  text-decoration: none;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   transition: all 0.3s ease;
+  border: none !important;
 }
 
-.btn-outline-white {
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 12px 24px;
-  border-radius: 50px;
+/* Button Register (Outline) */
+.btn-outline-maroon {
+  background-color: transparent !important;
+  color: white !important;
+  border: 2.5px solid #ffffff !important;
+  padding: 8px 24px !important;
+  border-radius: 50px !important;
   text-align: center;
   font-weight: 700;
-  flex: 1;
-  text-decoration: none;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.3s ease;
 }
 
 .btn-fill-maroon:hover {
-  background-color: #4a0a21;
+  transform: translateY(-2px);
+}
+.btn-outline-maroon:hover {
+  transform: translateY(-2px);
 }
 
-.btn-outline-maroon:hover {
-  background-color: rgba(100, 16, 45, 0.1);
+/* Perbaikan untuk Desktop Nav Links agar tidak menjadi link biru standar */
+.desktop-nav a {
+  text-decoration: none !important;
+}
+
+/* =========================================
+   DESKTOP OVERRIDES (Layar >= 768px)
+   ========================================= */
+@media screen and (min-width: 768px) {
+  .brand-text {
+    display: block !important;
+  }
+  .desktop-nav {
+    display: flex !important;
+  }
+  .hamburger-btn {
+    display: none !important;
+  }
+  .mobile-menu {
+    display: none !important;
+  } /* Paksa mati di Desktop */
 }

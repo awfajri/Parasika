@@ -32,29 +32,27 @@
 
     <!-- SECTION: HERO & NAVIGATION -->
     <div class="hero-wrapper">
-        
-        <!-- Navbar Glassmorphism - Navigasi melayang dengan efek blur -->
-        
+    <!-- Navbar -->
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl z-50 flex flex-col">
         <div class="flex justify-between items-center w-full glass-nav-container rounded-[34px] p-2">
-            <a href="index.php" class="flex items-center gap-3 pl-2">
+            <a href="index.php" class="flex items-center gap-3 pl-2 no-underline">
                 <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                     <img src="assets/img/logo.jpg" alt="Logo Parasika" class="w-10 h-10 rounded-full object-cover bg-white p-1" />
                 </div>
-                <span class="text-white font-bold text-[24px] hidden sm:block">Parasika</span>
+                <span class="brand-text">Parasika</span>
             </a>
-            <div class="hidden md:flex items-center gap-6 pr-6">
-                <a href="#fitur" class="text-white/80 hover:text-white text-sm font-medium transition-colors text-decoration-none">Fitur</a>
-                <a href="#faq" class="text-white/80 hover:text-white text-sm font-medium transition-colors text-decoration-none">FAQ</a>
-                <a href="registrasi.php" class="text-white/80 hover:text-white text-sm font-medium transition-colors text-decoration-none">Register</a>
-                <a href="login.php" class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-all text-decoration-none">
+
+            <div class="desktop-nav">
+                <a href="#fitur" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Fitur</a>
+                <a href="#faq" class="text-white/80 hover:text-white text-sm font-medium transition-colors">FAQ</a>
+                <a href="registrasi.php" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Register</a>
+                <a href="login.php" class="btn-fill-maroon" style="padding: 8px 20px !important; font-size: 0.85rem;">
                     <i class="bi bi-box-arrow-in-right"></i> Login
                 </a>
             </div>
-            <button id="navToggle" class="hamburger-btn md:hidden">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <button id="navToggle" class="hamburger-btn">
+                <span></span><span></span><span></span>
             </button>
         </div>
 
@@ -70,18 +68,16 @@
             </a>
             <div class="mobile-menu-divider"></div>
             <div class="nav-btn-container">
-                <a href="registrasi.php" class="btn-outline-white">Register</a>
-                <a href="login.php" class="btn-fill-white">Login</a>
+                <a href="registrasi.php" class="btn-outline-maroon">Register</a>
+                <a href="login.php" class="btn-fill-maroon">Login</a>
             </div>
         </div>
     </nav>
 
-
-        <!-- Background Image Hero -->
+    <!-- Background Image Hero -->
         <div class="hero-img-container">
             <img src="assets/img/hero.jpg" alt="Kegiatan Parasika">
         </div>
-
     </div>
 
     <!-- Main Content Hero - Judul dan Deskripsi singkat aplikasi -->

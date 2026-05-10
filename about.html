@@ -18,27 +18,23 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body class="bg-white text-gray-900">
+    <!-- navbar -->
     <nav
       class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl z-50 flex flex-col"
     >
-      <!-- Main Navbar Bar -->
       <div
         class="flex justify-between items-center w-full glass-nav-container rounded-[34px] p-2"
       >
-        <!-- Logo & Brand -->
         <a href="index.html" class="flex items-center gap-3 pl-2">
           <img
             src="assets/img/logo-parasika.png"
             alt="Logo Parasika"
             class="w-[48px] h-[48px] rounded-full object-cover bg-white p-1"
           />
-          <span class="text-white font-bold text-[24px] hidden sm:block"
-            >Parasika</span
-          >
+          <span class="brand-text">Parasika</span>
         </a>
 
-        <!-- Desktop Links -->
-        <div class="hidden md:flex items-center gap-6 pr-6">
+        <div class="desktop-nav">
           <a
             href="about.html"
             class="text-white/80 hover:text-white text-sm font-medium transition-colors"
@@ -74,15 +70,11 @@
           </a>
         </div>
 
-        <!-- Hamburger Button -->
-        <button id="navToggle" class="hamburger-btn md:hidden">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button id="navToggle" class="hamburger-btn">
+          <span></span><span></span><span></span>
         </button>
       </div>
 
-      <!-- Mobile Menu Dropdown -->
       <div id="mobileMenu" class="mobile-menu">
         <a href="about.html" class="mobile-menu-item">
           <span>About</span>
