@@ -49,9 +49,9 @@ $nama_file = $dokumen['nama_file'];
  * Menggunakan metode `file_get_contents` dengan stream context (No-cURL)
  * agar kompatibel dengan server/hosting yang mematikan fitur cURL.
  */
-$supabase_url = 'https://xhsklaikgrvuspytbrrq.supabase.co';
-$supabase_key = 'sb_publishable_mho-sfVKTUZUGqMJe6GImA_GeyxciY-';
-$bucket_name = 'senandika_arsip';
+$supabase_url = 'https://xxx.supabase.co';
+$supabase_key = 'sb_publishable_xxx';
+$bucket_name  = 'xxx';
 
 // Bangun endpoint URL untuk operasi DELETE
 $delete_url = $supabase_url . '/storage/v1/object/' . $bucket_name . '/' . rawurlencode($nama_file);

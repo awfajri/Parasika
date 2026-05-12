@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 require_once 'config/database.php';
 
-// Mengambil data dari form dan membersihkan whitespace
+// Mengambil data dari form
 $nama  = trim($_POST['nama_lengkap']);
 $npm   = trim($_POST['npm']);
 $pass1 = $_POST['password'];

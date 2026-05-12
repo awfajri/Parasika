@@ -66,9 +66,9 @@ if ($file_size > 5242880) {
 /**
  * TAHAP 2: PERSIAPAN UPLOAD KE SUPABASE
  */
-$supabase_url = 'https://xhsklaikgrvuspytbrrq.supabase.co';
-$supabase_key = 'sb_publishable_mho-sfVKTUZUGqMJe6GImA_GeyxciY-';
-$bucket_name  = 'senandika_arsip';
+$supabase_url = 'https://xxx.supabase.co';
+$supabase_key = 'sb_publishable_xxx';
+$bucket_name  = 'xxx';
 
 // Membuat nama file yang unik untuk mencegah overwrite file dengan nama sama
 // Format: timestamp_namafile-bersih.ext
